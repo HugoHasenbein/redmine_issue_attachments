@@ -1,5 +1,5 @@
 # redmine_issue_attachments
-Browse all issue attachments of all issues in curren t project in arbitrary queries. Queries can be saved like issue queries. Download bulk pdf attachments as combined pdf's, combined pdf' for double sided printing or as zip archive. Other bulk attachments can be downloaded as zp archives. In zip archives and combined pdf the order of the selected files adheres to the order in the index list.
+Browse all issue attachments of all issues in current project in arbitrary queries. Queries can be saved like issue queries. Download bulk pdf attachments as combined pdf's, combined pdf' for double sided printing or as zip archive. Other bulk attachments can be downloaded as zp archives. In zip archives and combined pdf the order of the selected files adheres to the order in the index list.
 
 ![animated GIF that represents a quick overview](/doc/Overview.gif)
 
