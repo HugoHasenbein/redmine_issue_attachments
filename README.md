@@ -33,6 +33,18 @@ go to Redmine root folder
 
 `/etc/init.d/apache2 restart`
 
+### Use
+
+Make sure you have the right permissions, which can be set in 'Roles and Permissions' in the Redmine Administration menu 
+
+Issue-Attachments
+(x) View issue attachments
+
+### Localisations
+
+* English
+* German
+
 ### Change.Log
 
 * **1.0.2** July 1st commit
