@@ -38,6 +38,7 @@ go to Redmine root folder
 Make sure you have the right permissions, which can be set in 'Roles and Permissions' in the Redmine Administration menu 
 
 Issue-Attachments
+
 (x) View issue attachments
 
 ### Localisations
