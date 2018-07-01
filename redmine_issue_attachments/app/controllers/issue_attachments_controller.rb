@@ -76,30 +76,40 @@ class IssueAttachmentsController < AttachmentsController
       @issue_attachment = @issue_attachments.first
     end
     
-    # create empty pdf
-    bulk_pdf = CombinePDF.new
+    begin
+	  # create empty pdf
+	  bulk_pdf = CombinePDF.new
 
-    num_pages = 0
-    len = params[:ids].length
-    params[:ids].each_with_index do |id, index|
-      # select issue_attachment in exact order as selected in index
-      issue_attachment = @issue_attachments.select { |ia| ia.id == id.to_i }.first
-    
-      # append current pdf
-      tmppdf = CombinePDF.load(issue_attachment.diskfile) # load pdf 
-      bulk_pdf << tmppdf # append pdf
-      num_pages += tmppdf.pages.length # account page numbers
+	  num_pages = 0
+	  len = params[:ids].length
+	  params[:ids].each_with_index do |id, index|
+		# select issue_attachment in exact order as selected in index
+		issue_attachment = @issue_attachments.select { |ia| ia.id == id.to_i }.first
+	
+		# append current pdf
+		tmppdf = CombinePDF.load(issue_attachment.diskfile) # load pdf 
+		bulk_pdf << tmppdf # append pdf
+		num_pages += tmppdf.pages.length # account page numbers
 
-      # add empty page to make sure each new pdf starts on right page
-      if !num_pages.even? && index < (len-1) && params[:double_sided_printing].present?
-       bulk_pdf << CombinePDF.create_page(tmppdf.pages.last.mediabox)
-       num_pages += 1
-      end
+		# add empty page to make sure each new pdf starts on right page
+		if !num_pages.even? && index < (len-1) && params[:double_sided_printing].present?
+		 bulk_pdf << CombinePDF.create_page(tmppdf.pages.last.mediabox)
+		 num_pages += 1
+		end
+	  
+	  end #each
+	  
+      send_data bulk_pdf.to_pdf, 
+      			:filename => "combined.pdf", 
+      			:type => "application/pdf",
+			    :x_sendfile => true
+      			
+      return
       
-    end #each
-        
-    send_data bulk_pdf.to_pdf, filename: "combined.pdf", type: "application/pdf"
-    return
+    rescue Exception => e
+      flash[:warning] = e.message
+      redirect_to :back
+    end 
     
   end #def
   

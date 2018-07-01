@@ -22,9 +22,14 @@
 
 de:
   
-  # Attachments Index
+  # üroject module name
+  project_module_redmine_issue_attachments: "Ticket-Dateien"
+
+  # sidebar strings
   label_issue_attachments: "Ticket-Dateien"
   label_attachment_view_all: "Alle Dateien anzeigen"
+
+  # query strings
   field_attachment_category: "Datei-Kategorie"
   field_content_type: "Art"
   field_issue_id: "Ticket-ID"
@@ -34,11 +39,10 @@ de:
   field_issue_status: "Ticket-Status"
   field_issue_category: "Ticket-Kategorie"
   
+  # context menu strings
   button_download_bulk_pdf: "Sammel-PDF"
   button_download_double_sided_bulk_pdf: "Sammel-PDF, doppelseitig"
   button_download_zip: "ZIP-Archiv"
-  
-  enumeration_issue_attachment_description: "Datei-Beschreibungen"
-  
-  project_module_redmine_issue_attachments: "Ticket-Dateien"
+    
+  #permission strings
   permission_view_issue_attachments: "Ticket-Dateien sehen"
