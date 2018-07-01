@@ -1,0 +1,8 @@
+<h3><%= l(:label_attachment_plural) %></h3>
+
+<ul>
+<li><%= link_to l(:label_attachment_view_all), _project_issue_attachments_path(@project, :set_filter => 1) %></li>
+</ul>
+
+<%= render_sidebar_issue_attachment_queries %>
+

@@ -1,0 +1,21 @@
+<h2><%= l(:label_query_plural) %></h2>
+
+<% if @queries.empty? %>
+  <p><i><%=l(:label_no_data)%></i></p>
+<% else %>
+  <table class="list">
+  <% @queries.each do |query| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td class="name">
+        <%= link_to query.name, :controller => 'issues', :action => 'index', :project_id => @project, :query_id => query %>
+      </td>
+      <td class="buttons">
+        <% if query.editable_by?(User.current) %>
+        <%= link_to l(:button_edit), edit_issue_attachment_query_path(query), :class => 'icon icon-edit' %>
+        <%= delete_link query_path(query) %>
+      <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

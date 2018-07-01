@@ -1,0 +1,48 @@
+# encoding: utf-8
+#
+# Redmine plugin for quick attribute setting of redmine issues
+#
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# English translations for Ruby on Rails
+
+en:
+  
+  # üroject module name
+  project_module_redmine_issue_attachments: "Issue-Attachments"
+
+  # sidebar strings
+  label_issue_attachments: "Issue-Attachments"
+  label_attachment_view_all: "View all Issue-Attachments"
+
+  # query strings
+  field_attachment_category: "Attachment category"
+  field_content_type: "Kind"
+  field_issue_id: "Issue ID"
+  field_issue_attachment_id: "Attachment ID"
+  field_project_id: "Project ID"
+  field_issue_subject: "Issue subject"
+  field_issue_status: "Issue status"
+  field_issue_category: "Issue category"
+  
+  # context menu strings
+  button_download_bulk_pdf: "Combined PDF"
+  button_download_double_sided_bulk_pdf: "Combined PDF, double-sided"
+  button_download_zip: "ZIP-archive"
+    
+  #permission strings
+  permission_view_issue_attachments: "View issue attachments"

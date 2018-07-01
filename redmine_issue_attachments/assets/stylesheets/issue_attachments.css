@@ -1,0 +1,24 @@
+/* ------------------------- attachments index content_type (icons column) ------- */
+
+table.list td.content_type {
+ 	width: 32px;
+}
+
+table.list td.filename {
+ 	text-align: left;
+}
+
+table.list td.description {
+ 	text-align: left;
+}
+
+table.list td.container {
+ 	text-align: left;
+}
+
+table.list td.project {
+ 	text-align: left;
+}
+
+
+

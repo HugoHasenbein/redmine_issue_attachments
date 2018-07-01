@@ -1,0 +1,44 @@
+# encoding: utf-8
+#
+# Redmine plugin for quick attribute setting of redmine issues
+#
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# German translations for Ruby on Rails
+
+de:
+  
+  # Attachments Index
+  label_issue_attachments: "Ticket-Dateien"
+  label_attachment_view_all: "Alle Dateien anzeigen"
+  field_attachment_category: "Datei-Kategorie"
+  field_content_type: "Art"
+  field_issue_id: "Ticket-ID"
+  field_issue_attachment_id: "Datei-ID"
+  field_project_id: "Project-ID"
+  field_issue_subject: "Ticket-Thema"
+  field_issue_status: "Ticket-Status"
+  field_issue_category: "Ticket-Kategorie"
+  
+  button_download_bulk_pdf: "Sammel-PDF"
+  button_download_double_sided_bulk_pdf: "Sammel-PDF, doppelseitig"
+  button_download_zip: "ZIP-Archiv"
+  
+  enumeration_issue_attachment_description: "Datei-Beschreibungen"
+  
+  project_module_redmine_issue_attachments: "Ticket-Dateien"
+  permission_view_issue_attachments: "Ticket-Dateien sehen"

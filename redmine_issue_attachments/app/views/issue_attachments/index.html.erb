@@ -1,0 +1,78 @@
+<h2><%= @query.new_record? ? l(:label_attachment_plural) : @query.name %></h2>
+<% html_title(@query.new_record? ? l(:label_attachment_plural) : @query.name) %>
+
+<%= form_tag({ :controller => 'issue_attachments', :action => 'index', :project_id => @project },
+            :method => :get, :id => 'query_form') do %>
+  <div id="query_form_with_buttons" class="hide-when-print">
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <div id="query_form_content">
+    <fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+      <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+      <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+        <%= render :partial => 'issue_attachment_queries/filters', :locals => {:query => @query} %>
+      </div>
+    </fieldset>
+    <fieldset id="options" class="collapsible collapsed">
+      <legend onclick="toggleFieldset(this);"><%= l(:label_options) %></legend>
+      <div style="display: none;">
+        <table>
+          <tr>
+            <td class="field"><%= l(:field_column_names) %></td>
+            <td><%= render_query_columns_selection(@query) %></td>
+          </tr>
+          <tr>
+            <td class="field"><label for='group_by'><%= l(:field_group_by) %></label></td>
+            <td><%= select_tag('group_by',
+                               options_for_select(
+                                 [[]] + @query.groupable_columns.collect {|c| [c.caption, c.name.to_s]},
+                                 @query.group_by)
+                       ) %></td>
+          </tr>
+          <tr>
+            <td class="field"><%= l(:button_show) %></td>
+            <td><%= available_block_columns_tags(@query) %></td>
+          </tr>
+          <tr>
+            <td><%= l(:label_total_plural) %></td>
+            <td><%= available_totalable_columns_tags(@query) %></td>
+          </tr>
+        </table>
+      </div>
+    </fieldset>
+    </div>
+    <p class="buttons">
+    <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked' %>
+    <%= link_to l(:button_clear), { :set_filter => 1, :project_id => @project }, :class => 'icon icon-reload'  %>
+    <% if @query.new_record? %>
+      <% if User.current.allowed_to?(:save_queries, @project, :global => true) %>
+        <%= link_to_function l(:button_save),
+                             "$('#query_form').attr('action', '#{@project ? new_project_issue_attachment_query_path(@project) : new_issue_attachment_query_path}').submit()",
+                             :class => 'icon icon-save' %>
+      <% end %>
+    <% else %>
+      <% if @query.editable_by?(User.current) %>
+        <%= link_to l(:button_edit), edit_issue_attachment_query_path(@query), :class => 'icon icon-edit' %>
+        <%= delete_link issue_attachment_query_path(@query) %>
+      <% end %>
+    <% end %>
+    </p>
+  </div>
+<% end %>
+
+<%= error_messages_for 'query' %>
+<% if @query.valid? %>
+<% if @issue_attachments.empty? %>
+<p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+<%= render_query_totals(@query) %>
+<%= render :partial => 'issue_attachments/list', :locals => {:issue_attachments => @issue_attachments, :query => @query} %>
+<span class="pagination"><%= pagination_links_full @issue_attachment_pages, @issue_attachment_count %></span>
+<% end %>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'issue_attachments/sidebar' %>
+<% end %>
+
+<%= context_menu %>
+

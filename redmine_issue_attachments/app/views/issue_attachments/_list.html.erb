@@ -1,0 +1,44 @@
+<%= form_tag({}, :data => {:cm_url => issue_attachments_menu_path}) do -%>
+<%= hidden_field_tag 'back_url', url_for(params), :id => nil %>
+<div class="autoscroll">
+<table class="list issue_attachments <%= sort_css_classes %>">
+  <thead>
+    <tr>
+      <th class="checkbox hide-when-print">
+        <%= check_box_tag 'check_all', '', false, :class => 'toggle-selection',
+              :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}" %>
+      </th>
+      <% query.inline_columns.each do |column| %>
+        <%= column_header(column) %>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% grouped_issue_attachment_list(issue_attachments, @query, @issue_attachment_count_by_group) do |issue_attachment, level, group_name, group_count, group_totals| -%>
+  <% if group_name %>
+    <% reset_cycle %>
+    <tr class="group open">
+      <td colspan="<%= query.inline_columns.size + 1 %>">
+        <span class="expander" onclick="toggleRowGroup(this);">&nbsp;</span>
+        <span class="name"><%= group_name %></span> <span class="count"><%= group_count %></span> <span class="totals"><%= group_totals %></span>
+        <%= link_to_function("#{l(:button_collapse_all)}/#{l(:button_expand_all)}",
+                             "toggleAllRowGroups(this)", :class => 'toggle-all') %>
+      </td>
+    </tr>
+  <% end %>
+  <tr id="issue_attachment-<%= issue_attachment.id %>" class="hascontextmenu <%= cycle('odd', 'even') %> <%= issue_attachment.respond_to?('css_class') ? issue_attachment.css_class : '' %> <%= level > 0 ? "idnt idnt-#{level}" : nil %>">
+    <td class="checkbox hide-when-print"><%= check_box_tag("ids[]", issue_attachment.id, false, :id => nil) %></td>
+    <%= raw query.inline_columns.map {|column| "<td class=\"#{column.css_classes}\">#{issue_attachment_column_content(column, issue_attachment)}</td>"}.join %>
+  </tr>
+  <% @query.block_columns.each do |column|
+       if (text = issue_attachment_column_content(column, issue_attachment)) && text.present? -%>
+  <tr class="<%= current_cycle %>">
+    <td colspan="<%= @query.inline_columns.size + 1 %>" class="<%= column.css_classes %>"><%= text %></td>
+  </tr>
+  <% end -%>
+  <% end -%>
+  <% end -%>
+  </tbody>
+</table>
+</div>
+<% end -%>

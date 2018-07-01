@@ -1,0 +1,21 @@
+<ul>
+  <% if @issue_attachment.present? -%>
+    <li><%= context_menu_link l(:button_download), 
+              context_url_to_attachment(@issue_attachment, :download => true),
+              :class => 'attachment icon-edit', :disabled => false %></li>
+  <% else %>
+    <li><%= context_menu_link l(:button_download_bulk_pdf), 
+              bulk_pdf_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
+              :method => :post, :disabled => !@can[:pdf] %></li>
+    <li><%= context_menu_link l(:button_download_double_sided_bulk_pdf), 
+              bulk_pdf_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back, :double_sided_printing => true),
+              :method => :post, :disabled => !@can[:pdf] %></li>
+  <% end %>
+  <% if @issue_attachment.present? -%>
+  <% else %>
+    <li><%= context_menu_link l(:button_download_zip), 
+              bulk_zip_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
+              :method => :post, :disabled => false %></li>
+  <% end %>
+</ul>
+
