@@ -37,6 +37,8 @@ go to Redmine root folder
 
 Make sure you have the right 'View issue attachments' permissions, which can be set in 'Roles and Permissions' in the Redmine Administration menu in the section 'Issue-Attachments'
 
+The 'Issue-Attachments' can be found in the 'Project' menu
+
 ### Localisations
 
 * English
