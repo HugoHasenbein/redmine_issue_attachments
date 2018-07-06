@@ -39,6 +39,10 @@ Make sure you have the right 'View issue attachments' permissions, which can be 
 
 The 'Issue-Attachments' can be found in the 'Project' menu
 
+### Compatibilties
+
+* Supports Redmine Attachment Categories
+
 ### Localisations
 
 * English
