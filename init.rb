@@ -22,7 +22,7 @@ Redmine::Plugin.register :redmine_issue_attachments do
   name 'Issue Attachments'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to view all issue attachments in one query list'
-  version '1.0.2'
+  version '1.0.3'
   url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
   author_url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
 

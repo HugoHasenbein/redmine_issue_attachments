@@ -167,7 +167,10 @@ class IssueAttachmentsController < AttachmentsController
     @issue_attachment_ids = @issue_attachments.sort_by {|x| params[:ids].index "#{x.id}" }
     
 
-    @can = {:pdf => @issue_attachments.all? {|ia| ia.content_type =~ /pdf/i },
+    @can = {:pdf => @issue_attachments.all? { |ia| 
+    				ia.content_type =~ /pdf/i || 
+    				(ia.content_type =~ /octet-stream/i && File.extname(ia.filename) =~ /pdf/i)
+    	   },
     }
     
     render :layout => false
