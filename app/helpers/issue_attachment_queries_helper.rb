@@ -1,9 +1,8 @@
-# Redmine - project management software
-# Copyright (C) 2006-2016  Jean-Philippe Lang
+# encoding: utf-8
 #
-# adaption to issue attachments
+# Redmine plugin to view all issue attachments in one query list
 #
-# Copyright (C) 2018 Stephan Wenzel
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -149,7 +148,7 @@ module IssueAttachmentQueriesHelper
       link_to value.present? ? value : "", issue_attachment_path(issue_attachment)
     when :filename
       (Setting.thumbnails_enabled? && issue_attachment.thumbnailable?) ? 
-      	(link_to_attachment(issue_attachment) + content_tag( :div, content_tag( :div, thumbnail_tag_with_attachment_category(issue_attachment, :no_attribute_tag => true)), {:class=>"thumbnails"}) ) : 
+      	(link_to_attachment(issue_attachment) + content_tag( :div, thumbnail_tag_with_attachment_category(issue_attachment, :no_attribute_tag => true))) : 
       	 link_to_attachment(issue_attachment)
     when :description
       link_to value.present? ? value : "", issue_attachment_path(issue_attachment)

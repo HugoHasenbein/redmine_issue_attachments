@@ -1,9 +1,8 @@
-# Redmine - project management software
-# Copyright (C) 2006-2016  Jean-Philippe Lang
+# encoding: utf-8
 #
-# adaption to issue attachments
+# Redmine plugin to view all issue attachments in one query list
 #
-# Copyright (C) 2018 Stephan Wenzel
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
