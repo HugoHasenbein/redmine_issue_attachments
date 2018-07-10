@@ -40,6 +40,8 @@ de:
   field_issue_status: "Ticket-Status"
   field_issue_category: "Ticket-Kategorie"
   
+  label_thumbnail: "Vorschaubild"
+  
   # context menu strings
   button_download_bulk_pdf: "Sammel-PDF"
   button_download_double_sided_bulk_pdf: "Sammel-PDF, doppelseitig"

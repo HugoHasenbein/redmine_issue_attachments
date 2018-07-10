@@ -24,23 +24,26 @@ class IssueAttachmentQuery < Query
   self.queried_class = IssueAttachment
 
   self.available_columns = [
-    QueryColumn.new(:id,              		:sortable => "#{IssueAttachment.table_name}.id", :default_order => 'desc', :caption => '#', :frozen => true),
-    QueryColumn.new(:filename,        		:sortable => "#{IssueAttachment.table_name}.filename", :groupable => true),
-    QueryColumn.new(:filesize,        		:sortable => "#{IssueAttachment.table_name}.filesize", :totalable => true),
-    QueryColumn.new(:downloads,       		:sortable => "#{IssueAttachment.table_name}.downloads", :totalable => true),
-    QueryColumn.new(:description,     		:sortable => "#{IssueAttachment.table_name}.description", :groupable => true),
-    QueryColumn.new(:content_type,    		:sortable => "#{IssueAttachment.table_name}.content_type", :groupable => true),
-    QueryColumn.new(:author,          		:sortable => lambda {User.fields_for_order_statement("authors")}, :groupable => true),
-    QueryColumn.new(:created_on,      		:sortable => "#{IssueAttachment.table_name}.created_on", :default_order => 'desc'),
-    QueryColumn.new(:container, 			:sortable => "#{Issue.table_name}.id", :default_order => 'desc', :groupable => true, :caption => :field_issue),
+    QueryColumn.new(:id,           :sortable => "#{IssueAttachment.table_name}.id", :default_order => 'desc', :caption => '#', :frozen => true),
+    QueryColumn.new(:filename,     :sortable => "#{IssueAttachment.table_name}.filename", :groupable => true),
+    QueryColumn.new(:filesize,     :sortable => "#{IssueAttachment.table_name}.filesize", :totalable => true),
+    QueryColumn.new(:downloads,    :sortable => "#{IssueAttachment.table_name}.downloads", :totalable => true),
+    QueryColumn.new(:description,  :sortable => "#{IssueAttachment.table_name}.description", :groupable => true),
+    QueryColumn.new(:content_type, :sortable => "#{IssueAttachment.table_name}.content_type", :groupable => true),
+    QueryColumn.new(:author,       :sortable => lambda {User.fields_for_order_statement("authors")}, :groupable => true),
+    QueryColumn.new(:created_on,   :sortable => "#{IssueAttachment.table_name}.created_on", :default_order => 'desc'),
+    QueryColumn.new(:container,    :sortable => "#{Issue.table_name}.id", :default_order => 'desc', :groupable => true, :caption => :field_issue),
 
-    QueryColumn.new(:project, 		        :sortable => "#{Project.table_name}.name", :default_order => 'asc', :groupable => "#{Project.table_name}.name", :caption => :field_project),
-    QueryColumn.new(:status,        	    :sortable => "#{IssueStatus.table_name}.position", :default_order => 'asc', :groupable => "#{IssueStatus.table_name}.name", :caption => :field_issue_status)
+    QueryColumn.new(:project,      :sortable => "#{Project.table_name}.name", :default_order => 'asc', :groupable => "#{Project.table_name}.name", :caption => :field_project),
+    QueryColumn.new(:status,       :sortable => "#{IssueStatus.table_name}.position", :default_order => 'asc', :groupable => "#{IssueStatus.table_name}.name", :caption => :field_issue_status),
+
+    QueryColumn.new(:thumbnail,    :caption => :label_thumbnail)
+
   ]
   
   if IssueAttachment.method_defined?(:attachment_category)
     self.available_columns << 
-    QueryColumn.new(:attachment_category, 	:sortable => "#{AttachmentCategory.table_name}.position", :default_order => 'asc', :groupable => true) 
+    QueryColumn.new(:attachment_category,   :sortable => "#{AttachmentCategory.table_name}.position", :default_order => 'asc', :groupable => true) 
   end
 
   scope :visible, lambda {|*args|
@@ -147,21 +150,21 @@ class IssueAttachmentQuery < Query
 
     # check if better issue plugin is installed
     if IssueAttachment.method_defined?(:attachment_category)
-	  add_available_filter "attachment_category_id",
-		:type => :list_optional,
-		:values => AttachmentCategory.all.collect{|s| [s.name, s.id.to_s] } + ["", ""]
-	end
+      add_available_filter "attachment_category_id",
+        :type => :list_optional,
+        :values => AttachmentCategory.all.collect{|s| [s.name, s.id.to_s] } + ["", ""]
+    end
 
-    add_available_filter "filename", 		    :type => :text
-    add_available_filter "filesize", 		    :type => :float
-    add_available_filter "downloads", 		    :type => :integer
-    add_available_filter "description", 	    :type => :text
-    add_available_filter "content_type", 	    :type => :text
-    add_available_filter "created_on", 		    :type => :date_past
+    add_available_filter "filename",            :type => :text
+    add_available_filter "filesize",            :type => :float
+    add_available_filter "downloads",           :type => :integer
+    add_available_filter "description",         :type => :text
+    add_available_filter "content_type",        :type => :text
+    add_available_filter "created_on",          :type => :date_past
     add_available_filter "issue_attachment_id", :type => :integer, :label => :field_issue_attachment_id
     
-    add_available_filter "container_id", 	    :type => :tree, :label => :field_issue_id
-    add_available_filter "issue_subject", 	    :type => :tree, :label => :field_issue_subject
+    add_available_filter "container_id",        :type => :tree, :label => :field_issue_id
+    add_available_filter "issue_subject",       :type => :tree, :label => :field_issue_subject
     add_available_filter "issue_status",
       :type => :list_status, :values => IssueStatus.sorted.collect{|s| [s.name, s.id.to_s] }
 
