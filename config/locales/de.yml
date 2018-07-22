@@ -46,6 +46,10 @@ de:
   button_download_bulk_pdf: "Sammel-PDF"
   button_download_double_sided_bulk_pdf: "Sammel-PDF, doppelseitig"
   button_download_zip: "ZIP-Archiv"
-    
+  button_attachment_category: "Kategorie" # needed if Redmine Attachment Categories is installed
+  button_attachment_uncategorize: "Entkategorisiere" # needed if Redmine Attachment Categories is installed
+ 
   #permission strings
   permission_view_issue_attachments: "Ticket-Dateien sehen"
+  permission_edit_issue_attachments: "Ticket-Dateien bearbeiten"
+  permission_delete_issue_attachments: "Ticket-Dateien massenweise löschen"

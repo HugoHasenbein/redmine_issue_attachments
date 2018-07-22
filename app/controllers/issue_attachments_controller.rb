@@ -26,7 +26,8 @@ class IssueAttachmentsController < AttachmentsController
 
 
   before_filter :find_optional_project,  :only => [:index]
-  before_filter :find_issue_attachments, :only => [:issue_attachments_menu, :bulk_pdf, :bulk_zip]
+  before_filter :find_issue_attachments, :only => [:issue_attachments_menu, :bulk_pdf, :bulk_zip, :bulk_delete, :bulk_categorize]
+  before_action :authorize
 
   helper :issue_attachment_queries
   include IssueAttachmentQueriesHelper
@@ -154,7 +155,39 @@ class IssueAttachmentsController < AttachmentsController
     return
     
   end #def
+
+  # ------------------------------------------------------------------------------#
+  def bulk_categorize
+
+    if IssueAttachment.method_defined?(:attachment_category)  
+      editable_ids = @issue_attachments.map {|ia| ia.editable? ? ia.id : nil }.compact
+      Attachment.where(:id => editable_ids).update_all(:attachment_category_id => params[:attachment_category_id])
+    end #if
+
+    redirect_to :back
+
+  end #def
   
+  # ------------------------------------------------------------------------------#
+  def bulk_delete
+  
+    @issue_attachments.each do |ia|
+      if ia.deletable?
+		if ia.container.respond_to?(:init_journal)
+		   ia.container.init_journal(User.current)
+		end
+		if ia.container
+		  # Make sure association callbacks are called
+		  ia.container.attachments.delete(ia)
+		else
+		  ia.destroy
+		end
+	  end #do 
+    end #if
+    
+    redirect_to :back
+    
+  end #def  
 
   # ------------------------------------------------------------------------------#
   def issue_attachments_menu
@@ -166,11 +199,27 @@ class IssueAttachmentsController < AttachmentsController
     # important: order ids in the seqence as they had been posted
     @issue_attachment_ids = @issue_attachments.sort_by {|x| params[:ids].index "#{x.id}" }
     
-
-    @can = {:pdf => @issue_attachments.all? { |ia| 
-    				ia.content_type =~ /pdf/i || 
-    				(ia.content_type =~ /octet-stream/i && File.extname(ia.filename) =~ /pdf/i)
-    	   },
+    @can = {:pdf    => @issue_attachments.all? { |ia| 
+    				     ia.is_pdf? 
+    	               },
+    	    :delete => (@issue_attachments.all? { |ia| 
+    	                 ia.deletable?
+    	               } &&
+    	               User.current.allowed_to?({:controller => params[:controller], 
+    	                                         :action => :bulk_delete }, 
+    	                                         @project || @projects, 
+    	                                         :global => false
+    	                                        )
+    	               ),
+    	    :edit   => (@issue_attachments.all? { |ia| 
+    	                 ia.editable?
+    	               } &&
+    	               User.current.allowed_to?({:controller => params[:controller], 
+    	                                         :action => :bulk_categorize }, 
+    	                                         @project || @projects, 
+    	                                         :global => false
+    	                                        )
+    	               )
     }
     
     render :layout => false
@@ -214,6 +263,7 @@ private
     @project = @projects.first if @projects.size == 1
    rescue ActiveRecord::RecordNotFound
 	 render_404
-  end
+  end #def
+
 
 end

@@ -38,13 +38,5 @@ class IssueAttachment < Attachment
      joins(:project).
 	 where(Project.allowed_to_condition(args.shift || User.current, :view_issue_attachments, *args))
    }
-   
-  def status
-    super.name
-  end #end 
-
-  def project
-    super.name
-  end #end 
-   
+      
 end #class

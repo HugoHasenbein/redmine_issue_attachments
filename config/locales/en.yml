@@ -23,7 +23,7 @@
 
 en:
   
-  # üroject module name
+  # project module name
   project_module_redmine_issue_attachments: "Issue-Attachments"
 
   # sidebar strings
@@ -46,6 +46,10 @@ en:
   button_download_bulk_pdf: "Combined PDF"
   button_download_double_sided_bulk_pdf: "Combined PDF, double-sided"
   button_download_zip: "ZIP-archive"
+  button_attachment_category: "Category" # needed if Redmine Attachment Categories is installed
+  button_attachment_uncategorize: "Uncategorize" # needed if Redmine Attachment Categories is installed
     
   #permission strings
   permission_view_issue_attachments: "View issue attachments"
+  permission_edit_issue_attachments: "Edit issue attachments"
+  permission_delete_issue_attachments: "Bulk-delete issue attachments"

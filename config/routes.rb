@@ -37,6 +37,8 @@ RedmineApp::Application.routes.draw do
     collection do
       post 'bulk_pdf'
       post 'bulk_zip'
+      post 'bulk_delete'
+      post 'bulk_categorize'
     end
   end
 

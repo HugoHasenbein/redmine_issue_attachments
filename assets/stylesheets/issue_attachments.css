@@ -20,5 +20,20 @@ table.list td.project {
  	text-align: left;
 }
 
+a.icon_categorize {
+	padding: 0px 0px 0px 17px;
+}
+
+a.icon_categorize.disabled {
+	padding: 0px 0px 0px 17px;
+	opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+a.icon_categorize:before {
+	content: '\1f6a9';
+	margin: 0px 0px 0px -17px;
+}
+
 
 

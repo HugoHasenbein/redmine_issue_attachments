@@ -2,7 +2,7 @@
   <% if @issue_attachment.present? -%>
     <li><%= context_menu_link l(:button_download), 
               context_url_to_attachment(@issue_attachment, :download => true),
-              :class => 'attachment icon-edit', :disabled => false %></li>
+              :class => 'attachment icon-download', :disabled => false %></li>
   <% else %>
     <li><%= context_menu_link l(:button_download_bulk_pdf), 
               bulk_pdf_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
@@ -11,11 +11,46 @@
               bulk_pdf_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back, :double_sided_printing => true),
               :method => :post, :disabled => !@can[:pdf] %></li>
   <% end %>
-  <% if @issue_attachment.present? -%>
-  <% else %>
-    <li><%= context_menu_link l(:button_download_zip), 
-              bulk_zip_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
-              :method => :post, :disabled => false %></li>
+
+  <li><%= context_menu_link l(:button_download_zip), 
+			bulk_zip_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
+			:method => :post, :disabled => false %></li>
+  
+  <% if IssueAttachment.method_defined?(:attachment_category) %>
+    <li class="folder">
+      <a href="#" class="submenu icon_categorize"><%= l(:button_attachment_category) %></a>
+      <ul>
+        <% if @issue_attachment.present? 
+             _selected = @issue_attachment.attachment_category.blank?
+           else
+             _selected = @issue_attachments.all? {|ia| ia.attachment_category.blank? }  
+           end
+        %>
+        <li><%= context_menu_link l(:button_attachment_uncategorize), 
+                 bulk_categorize_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back), 
+                 :method => :post, :selected => _selected, :class => "icon icon-not-ok", :disabled => !@can[:edit] %></li>
+                 
+		<% AttachmentCategory.all.each do |ac| -%>
+			<% if @issue_attachment.present? 
+				 _selected = ( @issue_attachment.attachment_category == ac )
+			   else
+				 _selected = @issue_attachments.all? {|ia| ia.attachment_category == ac }  
+			   end
+			   _css_color = contrast_css_color( ac.html_color )
+			   _style = {:class => "attachment_category " + Setting['plugin_redmine_attachment_categories']['attachment_category_style'].presence || "attachment_category_default",
+						 :style => "background:#{ac.html_color};color:#{_css_color};"
+						}
+			%>
+			<li><%= context_menu_link ac.name, 
+					 bulk_categorize_issue_attachments_path(:ids => @issue_attachment_ids, :attachment_category_id => ac, :back_url => @back), 
+					 {:method => :post, :selected => _selected, :disabled => !@can[:edit]}.merge(_selected ? {} : _style ) %></li>
+		<% end -%>
+      </ul>
+    </li>
   <% end %>
+
+  <li><%= context_menu_link l(:button_delete), 
+			bulk_delete_issue_attachments_path(:ids => @issue_attachment_ids, :back_url => @back),
+			:method => :post, :class => "attachment icon-del", :disabled => !@can[:delete]  %></li>
 </ul>
 

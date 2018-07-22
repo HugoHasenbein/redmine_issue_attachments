@@ -25,7 +25,7 @@ Redmine::Plugin.register :redmine_issue_attachments do
   name 'Issue Attachments'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to view all issue attachments in one query list'
-  version '1.0.3'
+  version '1.0.4'
   url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
   author_url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
 
@@ -38,7 +38,13 @@ Redmine::Plugin.register :redmine_issue_attachments do
     
     # set permissions
     permission :view_issue_attachments,
-               :issue_attachments => [:index, :issue_attachments_menu]
+               :issue_attachments => [:index, :issue_attachments_menu, :bulk_pdf, :bulk_zip]
+
+    permission :edit_issue_attachments,
+               :issue_attachments => [:bulk_categorize]
+
+    permission :delete_issue_attachments,
+               :issue_attachments => [:bulk_delete]
 
   end
 
