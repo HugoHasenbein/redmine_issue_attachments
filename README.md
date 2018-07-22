@@ -50,4 +50,6 @@ The 'Issue-Attachments' can be found in the 'Project' menu
 
 ### Change.Log
 
+* **1.0.4** added bulk delete, bulk categorize (if Redmine Attachment Categories is installed)
+* **1.0.3** minor fixes
 * **1.0.2** July 1st commit
