@@ -149,7 +149,7 @@ module IssueAttachmentQueriesHelper
     when :filename
       link_to_attachment(issue_attachment)
     when :thumbnail
-      (Setting.thumbnails_enabled? && issue_attachment.thumbnailable?) ? thumbnail_tag(issue_attachment) : ""
+      (Setting.thumbnails_enabled? && issue_attachment.thumbnailable?) ? content_tag(:div, content_tag(:div, thumbnail_tag(issue_attachment)), :class => "thumbnails") : ""
     when :description
       link_to value.present? ? value : "", issue_attachment_path(issue_attachment)
     when :filesize 

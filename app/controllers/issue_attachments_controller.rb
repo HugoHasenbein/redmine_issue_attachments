@@ -60,15 +60,15 @@ class IssueAttachmentsController < AttachmentsController
 
       respond_to do |format|
         format.html { render :template => 'issue_attachments/index', :layout => !request.xhr? }
-        #format.pdf  { send_file_headers! :type => 'application/pdf', :filename => 'emails.pdf' }
       end
     else
       respond_to do |format|
         format.html { render(:template => 'issue_attachments/index', :layout => !request.xhr?) }
       end
     end
-#         rescue ActiveRecord::RecordNotFound
-#         render_404
+    
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end #def
 
   # ------------------------------------------------------------------------------#

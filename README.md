@@ -9,9 +9,7 @@ Browse **all issue attachments** of **all issues** in current project in arbitra
 
 ### Install 
 
-1. go to your plugins folder
-
-`git clone https://github.com/HugoHasenbein/redmine_issue_attachments.git`
+1. download plugin and copy plugin folder redmine_issue_attachments go to Redmine's plugins folder 
 
 2. install gems
 
@@ -51,5 +49,5 @@ The 'Issue-Attachments' can be found in the 'Project' menu
 ### Change.Log
 
 * **1.0.4** added bulk delete, bulk categorize (if Redmine Attachment Categories is installed)
-* **1.0.3** minor fixes
+* **1.0.3** enhanced support for Redmine Attachment Categories plugin, enhanced themes support
 * **1.0.2** July 1st commit
