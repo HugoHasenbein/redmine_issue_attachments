@@ -1,0 +1,55 @@
+# encoding: utf-8
+#
+# Redmine plugin to view all issue attachments in one query list
+#
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+
+# Russian translations for Ruby on Rails
+
+ru:
+  
+  # project module name
+  project_module_redmine_issue_attachments: "Issue-Attachments"
+
+  # sidebar strings
+  label_issue_attachments: "Вложения"
+  label_attachment_view_all: "Просмотр всех вложений"
+
+  # query strings
+  field_attachment_category: "Категория вложения"
+  field_content_type: "Тип"
+  field_issue_id: "ID задачи"
+  field_issue_attachment_id: "Attachment ID"
+  field_project_id: "Project ID"
+  field_issue_subject: "Тема задачи"
+  field_issue_status: "Статус задачи"
+  field_issue_category: "Категория задачи"
+    
+  label_thumbnail: "Иконка"
+
+  # context menu strings
+  button_download_bulk_pdf: "Объединение PDF"
+  button_download_double_sided_bulk_pdf: "Объединение PDF, двухстороннее"
+  button_download_zip: "ZIP архив"
+  button_attachment_category: "Категория" # needed if Redmine Attachment Categories is installed
+  button_attachment_uncategorize: "Без категории" # needed if Redmine Attachment Categories is installed
+    
+  #permission strings
+  permission_view_issue_attachments: "Просмотр вложения"
+  permission_edit_issue_attachments: "Редактирование вложения"
+  permission_delete_issue_attachments: "Массовое удаление"
