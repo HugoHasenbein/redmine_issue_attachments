@@ -19,13 +19,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
+# 1.0.5
+#        - fixed project id in project menu
+
 require 'redmine'
 
 Redmine::Plugin.register :redmine_issue_attachments do
   name 'Issue Attachments'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to view all issue attachments in one query list'
-  version '1.0.4'
+  version '1.0.5'
   url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
   author_url 'https://github.com/HugoHasenbein/redmine_issue_attachments'
 
