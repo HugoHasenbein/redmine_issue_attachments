@@ -52,6 +52,7 @@ Redmine::Plugin.register :redmine_issue_attachments do
   menu :project_menu, 
 	   :issue_attachments, # only an item name to control class= and to identify this item
 	   { controller: 'issue_attachments', action: 'index' }, 
+       param:   :project_id,
 	   caption: :label_issue_attachments,
 	   after:   :issues
 end
