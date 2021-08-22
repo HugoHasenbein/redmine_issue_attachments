@@ -25,8 +25,8 @@ require 'zip'
 class IssueAttachmentsController < AttachmentsController
 
 
-  before_filter :find_optional_project,  :only => [:index]
-  before_filter :find_issue_attachments, :only => [:issue_attachments_menu, :bulk_pdf, :bulk_zip, :bulk_delete, :bulk_categorize]
+  before_action :find_optional_project,  :only => [:index]
+  before_action :find_issue_attachments, :only => [:issue_attachments_menu, :bulk_pdf, :bulk_zip, :bulk_delete, :bulk_categorize]
   before_action :authorize
 
   helper :issue_attachment_queries
