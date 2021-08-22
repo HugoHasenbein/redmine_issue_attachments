@@ -22,8 +22,8 @@
 class IssueAttachmentQueriesController < ApplicationController
   #menu_item :issue_attachments
   menu_item :issue_attachments
-  before_filter :find_query, :except => [:new, :create, :index]
-  before_filter :find_optional_project, :only => [:new, :create, :index]
+  before_action :find_query, :except => [:new, :create, :index]
+  before_action :find_optional_project, :only => [:new, :create, :index]
 
   accept_api_auth :index
 
