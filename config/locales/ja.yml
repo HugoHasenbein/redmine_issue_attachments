@@ -21,7 +21,7 @@
 
 # Japanese translations for Ruby on Rails
 
-en:
+ja:
   
   # project module name
   project_module_redmine_issue_attachments: "Issue-Attachments"
