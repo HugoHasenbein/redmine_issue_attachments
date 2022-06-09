@@ -19,40 +19,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
-# German translations for Ruby on Rails
+# Japanese translations for Ruby on Rails
 
-en:
+ja:
   
   # project module name
   project_module_redmine_issue_attachments: "Issue-Attachments"
 
   # sidebar strings
-  label_issue_attachments: "Issue-Attachments"
-  label_attachment_view_all: "View all Issue-Attachments"
+  label_issue_attachments: "添付ファイル"
+  label_attachment_view_all: "全ての添付ファイルを見る"
 
   # query strings
-  field_attachment_category: "Attachment category"
-  field_content_type: "Kind"
-  field_issue_id: "Issue ID"
-  field_issue_attachment_id: "Attachment ID"
-  field_project_id: "Project ID"
-  field_issue_subject: "Issue subject"
-  field_issue_status: "Issue status"
-  field_issue_category: "Issue category"
+  field_attachment_category: "添付ファイルのカテゴリ"
+  field_content_type: "拡張子"
+  field_issue_id: "チケット番号"
+  field_issue_attachment_id: "添付ファイル番号"
+  field_project_id: "プロジェクトID"
+  field_issue_subject: "題名"
+  field_issue_status: "ステータス"
+  field_issue_category: "チケット"
     
-  label_thumbnail: "Thumbnail"
+  label_thumbnail: "サムネイル"
 
   # context menu strings
-  button_download_bulk_pdf: "Combined PDF"
-  button_download_double_sided_bulk_pdf: "Combined PDF, double-sided"
-  button_download_zip: "ZIP-archive"
+  button_download_bulk_pdf: "PDFを結合してダウンロード"
+  button_download_double_sided_bulk_pdf: "PDFを結合してダウンロード（両面印刷用）"
+  button_download_zip: "zipファイルで一括ダウンロード"
   button_attachment_category: "Category" # needed if Redmine Attachment Categories is installed
   button_attachment_uncategorize: "Uncategorize" # needed if Redmine Attachment Categories is installed
     
   #permission strings
-  permission_view_issue_attachments: "View issue attachments"
-  permission_edit_issue_attachments: "Edit issue attachments"
-  permission_delete_issue_attachments: "Bulk-delete issue attachments"
+  permission_view_issue_attachments: "添付ファイルの閲覧"
+  permission_edit_issue_attachments: "添付ファイルの編集"
+  permission_delete_issue_attachments: "添付ファイルの削除"
 
   # message strings
-  text_attachments_destroy_confirmation: 'Are you sure you want to delete the selected attachment(s)?'
+  text_attachments_destroy_confirmation: '本当に選択した添付ファイルを削除しますか？'

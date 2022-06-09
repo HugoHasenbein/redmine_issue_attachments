@@ -127,5 +127,10 @@ module IssueAttachmentsHelper
     url = send(route_method, attachment, attachment.filename, options)
     url
   end
+
+  def issue_attachments_destroy_confirmation_message
+    message = l(:text_attachments_destroy_confirmation)
+    message
+  end
 		
 end #module
