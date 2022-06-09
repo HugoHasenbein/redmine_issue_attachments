@@ -53,3 +53,6 @@ de:
   permission_view_issue_attachments: "Ticket-Dateien sehen"
   permission_edit_issue_attachments: "Ticket-Dateien bearbeiten"
   permission_delete_issue_attachments: "Ticket-Dateien massenweise löschen"
+
+  # message strings
+  text_attachments_destroy_confirmation: 'Sind Sie sicher, dass Sie die ausgewählten Anhangs löschen möchten?'

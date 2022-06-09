@@ -53,3 +53,6 @@ en:
   permission_view_issue_attachments: "View issue attachments"
   permission_edit_issue_attachments: "Edit issue attachments"
   permission_delete_issue_attachments: "Bulk-delete issue attachments"
+
+  # message strings
+  text_attachments_destroy_confirmation: 'Are you sure you want to delete the selected attachment(s)?'
