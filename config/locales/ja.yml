@@ -1,0 +1,58 @@
+# encoding: utf-8
+#
+# Redmine plugin to view all issue attachments in one query list
+#
+# Copyright © 2018 Stephan Wenzel <stephan.wenzel@drwpatent.de>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+
+# Japanese translations for Ruby on Rails
+
+en:
+  
+  # project module name
+  project_module_redmine_issue_attachments: "Issue-Attachments"
+
+  # sidebar strings
+  label_issue_attachments: "添付ファイル"
+  label_attachment_view_all: "全ての添付ファイルを見る"
+
+  # query strings
+  field_attachment_category: "添付ファイルのカテゴリ"
+  field_content_type: "拡張子"
+  field_issue_id: "チケット番号"
+  field_issue_attachment_id: "添付ファイル番号"
+  field_project_id: "プロジェクトID"
+  field_issue_subject: "題名"
+  field_issue_status: "ステータス"
+  field_issue_category: "チケット"
+    
+  label_thumbnail: "サムネイル"
+
+  # context menu strings
+  button_download_bulk_pdf: "PDFを結合してダウンロード"
+  button_download_double_sided_bulk_pdf: "PDFを結合してダウンロード（両面印刷用）"
+  button_download_zip: "zipファイルで一括ダウンロード"
+  button_attachment_category: "Category" # needed if Redmine Attachment Categories is installed
+  button_attachment_uncategorize: "Uncategorize" # needed if Redmine Attachment Categories is installed
+    
+  #permission strings
+  permission_view_issue_attachments: "添付ファイルの閲覧"
+  permission_edit_issue_attachments: "添付ファイルの編集"
+  permission_delete_issue_attachments: "添付ファイルの削除"
+
+  # message strings
+  text_attachments_destroy_confirmation: '本当に選択した添付ファイルを削除しますか？'
